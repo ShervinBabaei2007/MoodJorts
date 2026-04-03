@@ -1,0 +1,284 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --darkest: #171b19;
+  --dark: #1d2b26;
+  --med: #2d3b36;
+  --light: #39574c;
+  --lightest: #475650;
+
+  --size-scale: 50;
+  --size-scale-px: calc(var(--size-scale) * 1px);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--light);
+}
+
+/* header */
+header {
+  background-color: var(--darkest);
+  color: var(--lightest);
+  padding: 0.25em;
+  display: flex;
+  justify-content: space-between;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+}
+
+.headerForm {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.headerForm button {
+  cursor: pointer;
+  background: var(--med);
+  color: white;
+  border: 1px solid var(--lightest);
+  border-radius: 4px;
+  padding: 0.3em 0.7em;
+  font-size: 0.9rem;
+}
+
+.headerForm button:hover {
+  background: var(--light);
+}
+
+/* board */
+.cardholder {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1em;
+  padding: 1em;
+  position: relative;
+}
+
+/* card */
+.card {
+  width: var(--card-size);
+  height: calc(var(--card-size) * 9 / 16);
+  position: relative;
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--dark);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* card display mode */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition:
+    height 0.2s ease,
+    width 0.2s ease;
+}
+
+/* controls hidden in display mode */
+.card .card-controls {
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Edit Mode */
+.card.editing img {
+  height: 55%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.control-top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.3em;
+  width: 100%;
+}
+
+.control-mid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.3em;
+  padding: 0.3em;
+}
+
+.controls-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3em 0.5em;
+  width: 100%;
+  min-height: 1.5em;
+}
+
+.card.editing .card-controls {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.card-controls button {
+  background: var(--med);
+  color: white;
+  border: 1px solid var(--lightest);
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+  font-size: 0.8em;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.card-controls button:hover {
+  background: var(--light);
+}
+
+/*  Modal / Add-Image Form  */
+
+.newPictureForm {
+  position: fixed;
+  top: 3em;
+  right: 1em;
+  z-index: 100;
+  background: var(--darkest);
+  border: 1px solid var(--lightest);
+  border-radius: 8px;
+  padding: 1.25em 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  min-width: 320px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.newPictureForm input[type="url"] {
+  width: 100%;
+  padding: 0.4em 0.6em;
+  border-radius: 4px;
+  border: 1px solid var(--lightest);
+  background: var(--med);
+  color: white;
+  font-size: 0.95em;
+}
+
+.newPictureForm div:last-child {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+
+.newPictureForm button {
+  background: var(--med);
+  color: white;
+  border: 1px solid var(--lightest);
+  border-radius: 4px;
+  padding: 0.35em 0.8em;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.newPictureForm button:hover {
+  background: var(--light);
+}
+
+.newPictureForm .buttonApproveAdd {
+  background: var(--light);
+  border-color: #6a9985;
+}
+
+.newPictureForm .buttonApproveAdd:hover {
+  background: #4f7a68;
+}
+
+/* card popped-out */
+.card.popped-out {
+  position: fixed;
+  z-index: 50;
+}
+
+/* selected card outline */
+.card.selected {
+  outline: 3px solid white;
+}
+
+/* Help overlay */
+.helpOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.helpBox {
+  background: var(--darkest);
+  border: 1px solid var(--lightest);
+  border-radius: 8px;
+  padding: 1.5em 2em;
+  color: white;
+  min-width: 320px;
+}
+
+.helpBox h2 {
+  margin: 0 0 0.75em 0;
+}
+
+.helpBox pre {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0 0 1em 0;
+  line-height: 1.8;
+}
+
+.helpClose {
+  background: var(--med);
+  color: white;
+  border: 1px solid var(--lightest);
+  border-radius: 4px;
+  padding: 0.35em 0.8em;
+  cursor: pointer;
+  font-size: 0.9em;
+  float: right;
+}
+
+/* undo/redo button */
+.buttonUndo,
+.buttonRedo {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.buttonUndo.can-undo,
+.buttonRedo.can-redo {
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* others */
+.displayNone {
+  display: none;
+}
+
+.formNoDefault {
+  margin: 0;
+}

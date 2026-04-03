@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mood Jorts</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script defer src="spa.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>Mood Jorts</h1>
+      <form class="formNoDefault headerForm">
+        <button class="buttonUndo">◀️</button>
+        <button class="buttonRedo">▶️</button>
+        <button class="buttonHelp">Help</button>
+        <button class="buttonClearCards">🧹</button>
+        <button class="buttonSeedCards">🌱</button>
+        <button class="buttonAddImage">Add Image</button>
+      </form>
+    </header>
+
+    <main class="cardholder"></main>
+
+    <form class="newPictureForm formNoDefault displayNone">
+      <div>
+        <input type="url" id="newPicUrl" name="newPicUrl" />
+      </div>
+      <div>
+        <button class="addPicture buttonAddRandom">🎲</button>
+        <button class="addPicture buttonApproveAddMore">Add More</button>
+        <button class="addPicture buttonApproveAdd">Add</button>
+        <button class="closeForm buttonCancelAdd">Cancel</button>
+      </div>
+    </form>
+
+    <div class="helpOverlay displayNone">
+      <div class="helpBox">
+        <h2>Keybinds</h2>
+        <pre>
+  Tab             - select next card
+  Shift+Tab       - select previous card
+  w / s           - move popped-out card up / down
+  ArrowUp/Down    - alternative for W / S
+  a / d           - reorder card (or move popped-out card left / right)
+  ArrowLeft/Right - alternative for A / D
+  Shift+          - grows selected card
+  -               - shrink selected card
+  p               - pop out / pop in selected card
+  z               - undo changes
+  x               - redo changes
+        </pre>
+        <button class="helpClose">Close</button>
+      </div>
+    </div>
+  </body>
+</html>

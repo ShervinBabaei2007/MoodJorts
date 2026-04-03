@@ -1,0 +1,5 @@
+node_modules/
+**/*solution*
+.DS_Store
+Thumbs.db
+.vscode/*
