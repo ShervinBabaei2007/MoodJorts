@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 8000;
 
 let app = express();
 
-app.use(express.static("static"))
+// Serve all files from the current directory
+app.use(express.static(path.join(__dirname)));
 
-app.listen(PORT, () => console.log(`server listening on http://localhost:${PORT}`))
+app.listen(PORT, () => console.log(`server listening on http://localhost:${PORT}`));
